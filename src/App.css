@@ -4,6 +4,14 @@
     @apply text-center text-3xl font-bold;
 }
 
+input {
+    @apply w-full p-2 outline-2 outline-blue-800
+}
+
+.error {
+    @apply text-red-600
+}
+
 nav {
     @apply flex items-center justify-between;
 
@@ -18,4 +26,13 @@ nav {
 
 nav, main {
     @apply max-w-4xl mx-auto;
+}
+
+form {
+    @apply mt-6;
+
+    
+    button {
+        @apply p-2 w-full cursor-pointer bg-blue-800 text-white hover:bg-blue-900;
+    }
 }
