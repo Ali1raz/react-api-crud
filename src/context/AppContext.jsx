@@ -14,7 +14,9 @@ export default function AppProvider({ children }) {
     });
 
     const data = await res.json();
-    setUser(data);
+    if (res.ok) {
+      setUser(data);
+    }
   }
 
   useEffect(() => {
@@ -24,7 +26,7 @@ export default function AppProvider({ children }) {
   }, [token]);
 
   return (
-    <AppContext.Provider value={{ token, setToken, user }}>
+    <AppContext.Provider value={{ token, setToken, user, setUser }}>
       {children}
     </AppContext.Provider>
   );

@@ -5,7 +5,11 @@
 }
 
 input {
-    @apply w-full p-2 outline-2 outline-blue-800
+    @apply w-full rounded-sm p-2 outline-2 outline-blue-800
+}
+
+button, .btn {
+    @apply rounded-sm p-2 cursor-pointer;
 }
 
 .error {
@@ -16,7 +20,7 @@ nav {
     @apply flex items-center justify-between;
 
     .right {
-        @apply space-x-7;
+        @apply flex items-center justify-between gap-4;
     }
 
     a {
@@ -29,10 +33,9 @@ nav, main {
 }
 
 form {
-    @apply mt-6;
-
+    @apply flex flex-col;
     
     button {
-        @apply p-2 w-full cursor-pointer bg-blue-800 text-white hover:bg-blue-900;
+        @apply w-full cursor-pointer bg-blue-800 text-white hover:bg-blue-900;
     }
 }

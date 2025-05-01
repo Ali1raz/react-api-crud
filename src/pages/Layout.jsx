@@ -1,9 +1,33 @@
 import { useContext } from "react";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import { AppContext } from "../context/AppContext";
 
 export default function Layout() {
-  const { user } = useContext(AppContext);
+  const { user, token, setUser, setToken } = useContext(AppContext);
+  const navigate = useNavigate();
+
+  async function handleLogout(e) {
+    e.preventDefault();
+
+    const res = await fetch("/api/logout", {
+      method: "post",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    const data = await res.json();
+
+    console.log(data);
+
+    if (res.ok) {
+      localStorage.removeItem("token");
+      setUser(null);
+      setToken(null);
+      navigate("/");
+    }
+  }
+
   return (
     <div>
       <header className=" w-full p-4 bg-blue-950 text-white">
@@ -12,13 +36,20 @@ export default function Layout() {
             <Link to="/">Home</Link>
           </div>
           {user ? (
-            <div className="space-x-4">
+            <div className="right">
               <p className=" text-slate-200">{user.name}</p>
+              <form>
+                <button className="!bg-slate-100 error" onClick={handleLogout}>
+                  Logout
+                </button>
+              </form>
             </div>
           ) : (
             <div className="right">
               <Link to="/register">Register</Link>
-              <Link to="/login">Login</Link>
+              <button>
+                <Link to="/login">Login</Link>
+              </button>
             </div>
           )}
         </nav>
