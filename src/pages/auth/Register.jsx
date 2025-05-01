@@ -36,7 +36,10 @@ export default function Register() {
   return (
     <>
       <h1 className="title">Register your account</h1>
-      <form onSubmit={handleSubmit} className="w-2/3 mx-auto space-y-4">
+      <form
+        onSubmit={handleSubmit}
+        className="w-2/3 register mx-auto space-y-4"
+      >
         <div>
           <input
             type="text"

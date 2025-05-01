@@ -34,7 +34,7 @@ export default function Login() {
   return (
     <>
       <h1 className="title">Login to your account</h1>
-      <form onSubmit={handleSubmit} className="w-2/3 mx-auto space-y-4">
+      <form onSubmit={handleSubmit} className="w-2/3 login mx-auto space-y-4">
         <div>
           <input
             type="email"

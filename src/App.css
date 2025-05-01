@@ -32,8 +32,8 @@ nav, main {
     @apply max-w-4xl mx-auto;
 }
 
-form {
-    @apply flex flex-col;
+form.login, form.register {
+    @apply flex flex-col min-h-72 justify-center mt-6;
     
     button {
         @apply w-full cursor-pointer bg-blue-800 text-white hover:bg-blue-900;
