@@ -38,6 +38,9 @@ export default function Layout() {
           {user ? (
             <div className="right">
               <p className=" text-slate-200">{user.name}</p>
+              <Link to="/create-post" className="text-sm">
+                Create
+              </Link>
               <form>
                 <button className="!bg-slate-100 error" onClick={handleLogout}>
                   Logout

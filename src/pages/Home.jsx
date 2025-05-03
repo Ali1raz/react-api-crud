@@ -1,8 +1,10 @@
 import { useContext, useEffect, useState } from "react";
 import { AppContext } from "../context/AppContext";
+import clsx from "clsx";
 
 export default function Home() {
   const [posts, setPosts] = useState([]);
+  const { user } = useContext(AppContext);
 
   const getPosts = async () => {
     const res = await fetch("/api/posts");
@@ -26,7 +28,10 @@ export default function Home() {
             {posts.map((post) => (
               <div
                 key={post.id}
-                className="border-2 border-black border-dashed p-5 mb-5 rounded-sm shadow-md"
+                className={clsx(
+                  "border-2 border-black border-dashed p-5 mb-5 rounded-sm shadow-md",
+                  user?.id === post.user.id && "border-blue-500"
+                )}
               >
                 <h2 className="text-xl font-bold">{post.title}</h2>
                 <small>Created by {post.user.name}</small>
