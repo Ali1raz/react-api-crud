@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { AppContext } from "../context/AppContext";
 import clsx from "clsx";
+import { Link } from "react-router-dom";
 
 export default function Home() {
   const [posts, setPosts] = useState([]);
@@ -33,8 +34,17 @@ export default function Home() {
                   user?.id === post.user.id && "border-blue-500"
                 )}
               >
-                <h2 className="text-xl font-bold">{post.title}</h2>
-                <small>Created by {post.user.name}</small>
+                <div className="flex justify-between items-center mb-2">
+                  <Link to={`/post/${post.id}`}>
+                    <h2 className="text-xl font-bold">{post.title}</h2>
+                  </Link>
+                  <div className="space-x-2">
+                    <small>{post.user.name}</small>
+                    <small className="text-sm text-gray-500">
+                      {new Date(post.created_at).toLocaleDateString()}
+                    </small>
+                  </div>
+                </div>
                 <p>{post.body}</p>
               </div>
             ))}
