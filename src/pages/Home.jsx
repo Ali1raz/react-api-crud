@@ -23,7 +23,7 @@ export default function Home() {
   return (
     <>
       <h1 className="title">Latest posts</h1>
-      <div className="max-w-96 mx-w-4xl mx-auto mt-10">
+      <div className=" max-w-3xl mx-auto mt-10">
         {posts.length > 0 ? (
           <div className="">
             {posts.map((post) => (
