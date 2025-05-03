@@ -52,7 +52,7 @@ export default function EditPost() {
     if (data.errors) {
       setErrors(data.errors);
     } else {
-      navigate("/");
+      navigate(`/post/${id}`);
     }
   };
 
